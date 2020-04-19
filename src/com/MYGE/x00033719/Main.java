@@ -2,6 +2,9 @@ package com.MYGE.x00033719;
 
 import javax.swing.*;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
 import static java.lang.Integer.parseInt;
 
 public class Main {
@@ -110,5 +113,28 @@ public class Main {
         }
         return empleado;
 
+    }
+    public static String mostrandoEmpleados(Empresa empresa) {
+
+        List<Empleado> print = empresa.getPlanilla();
+
+        AtomicReference<String> empleados = new AtomicReference<>("Lista empleados de la Empresa: \n");
+
+        print.forEach(e -> {
+            if (e instanceof PlazaFija) {
+                empleados.set(empleados + "\nNOMBRE: " + e.getNombre() +
+                        "\nPUESTO: " + e.getPuesto() +
+                        "\nSALARIO: " + e.getSalario() +
+                        "\nEXTENSION: " + ((PlazaFija) e).getExtension() +
+                        "\n(PLAZA FIJA)");
+            } else if (e instanceof ServicioProfesional) {
+                empleados.set(empleados + "NOMBRE: " + e.getNombre() +
+                        "\nPUESTO: " + e.getPuesto() +
+                        "\nSALARIO: " + e.getSalario() +
+                        "\nDURACION DE CONTRATO: " + ((ServicioProfesional) e).getMesesContrato() +
+                        "\n(SERVICIO PROFESIONAL)");
+            }
+        });
+        return empleados.get();
     }
 }
