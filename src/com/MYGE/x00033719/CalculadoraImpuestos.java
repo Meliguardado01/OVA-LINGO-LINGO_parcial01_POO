@@ -48,7 +48,6 @@ public final class CalculadoraImpuestos {
     }
 
     public static String mostrarTotales(){
-        System.out.println("Todos las totales de los Descuentos Acumulados son:\n");
         return "Total ISSS: $"+ totalISSS+ "\nTotal AFP: $"+ totalAFP + "\nTotal Renta: $" + totalRenta+"\n";
     }
 }
