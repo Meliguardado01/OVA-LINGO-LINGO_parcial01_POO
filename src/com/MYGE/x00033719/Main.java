@@ -156,4 +156,43 @@ public class Main {
 
         return total.get();
     }
+    public static Documento añadirDocumento(){
+        Empleado employee = null;
+        Documento info = null;
+        boolean continuar = true;
+        int numero=0;
+
+        try{
+            numero = parseInt(JOptionPane.showInputDialog(null, "Cuando documentos desea agregar (MINIMO 1): "));
+            if (numero < 1) {
+                throw new WrongNumberException("Digite una opcion valida");
+            }
+        } catch (WrongNumberException ex) {
+            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            return null;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error again, vuelva a digitar");
+            return null;
+        }
+        do {
+            if (numero < 1) {
+                JOptionPane.showInputDialog(null, "Ingrese un numero mayor que uno.");
+            } else if(numero >= 1) {
+                for(int i = 0; i< numero; i++ ){
+                    String name = JOptionPane.showInputDialog(null, "Ingrese el nombre del documento: ");
+                    String number = JOptionPane.showInputDialog(null, "Ingrese el numero del documento: ");
+                    info = new Documento(name, number);
+                    if (employee != null) {
+                        employee.addDocumento(info);
+                    }
+                }
+                continuar = false;
+            }
+        }while(continuar);
+
+
+        return info;
+    }
 }
