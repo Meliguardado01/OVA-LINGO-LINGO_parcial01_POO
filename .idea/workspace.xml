@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="810cb70e-92fc-400b-b0d6-887027e37a3c" name="Default Changelist" comment="" />
+    <list default="true" id="810cb70e-92fc-400b-b0d6-887027e37a3c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/com/MYGE/x00033719/CalculadoraImpuestos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/MYGE/x00033719/CalculadoraImpuestos.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
