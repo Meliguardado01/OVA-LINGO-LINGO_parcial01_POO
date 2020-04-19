@@ -12,6 +12,73 @@ public class Main {
 
     public static void main(String[] args) {
 
+        boolean on = true;
+        Empresa empresa = new Empresa(JOptionPane.showInputDialog(null, "Ingrese el nombre de su empresa: "));
+
+
+        do {
+            switch (printMenu(empresa)) {
+
+                case 1:
+                    Empleado emp = añadirEmpleado(empresa);
+                    if (emp == null) {
+                        break;
+                    }
+
+                    empresa.addEmpleado(emp);
+                    JOptionPane.showMessageDialog(null, "Empleado ingresado exitosamente.");
+
+                    break;
+
+                case 2:
+
+                    String name = JOptionPane.showInputDialog(null, "Ingrese el nombre del empleado a despedir: ");
+                    try {
+                        empresa.quitEmpleado(name);
+                    } catch (NotExistingWorkerException ex) {
+                        System.out.println(ex.getMessage());
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                        break;
+                    }
+                    JOptionPane.showMessageDialog(null, "Lo sentimos, usted ha sido despedido :( F");
+                    break;
+
+                case 3:
+
+                    String mostrando = mostrandoEmpleados(empresa);
+                    JOptionPane.showMessageDialog(null, mostrando);
+                    break;
+
+                case 4:
+                    double salary = 0;
+                    String nameEmp = JOptionPane.showInputDialog(null, "Ingrese el nombre del empleado: ");
+                    try {
+                        salary = calculandoSalario(nameEmp, empresa.getPlanilla());
+                    } catch (NotExistingWorkerException ex) {
+                        System.out.println(ex.getMessage());
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
+                    JOptionPane.showMessageDialog(null, "El salario del empleado " + nameEmp
+                            + " luego de aplicar descuentos es de: \n $" + salary);
+                    break;
+
+
+                case 5:
+
+                    JOptionPane.showMessageDialog(null, CalculadoraImpuestos.mostrarTotales());
+                    break;
+
+                case 6:
+                    JOptionPane.showMessageDialog(null, "ADIOS, VUELVA PRONTO.");
+                    on = false;
+                    break;
+                default:
+                    break;
+
+            }
+
+        } while (on);
+
     }
 
     public static int printMenu(Empresa empresa) {
