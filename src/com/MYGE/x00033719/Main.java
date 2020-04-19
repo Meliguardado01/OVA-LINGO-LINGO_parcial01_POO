@@ -3,6 +3,7 @@ package com.MYGE.x00033719;
 import javax.swing.*;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static java.lang.Integer.parseInt;
@@ -136,5 +137,23 @@ public class Main {
             }
         });
         return empleados.get();
+    }
+    public static double calculandoSalario(String name, List<Empleado> emp) throws NotExistingWorkerException {
+        AtomicReference<Double> total = new AtomicReference<>((double) 0);
+        AtomicInteger calculadora = new AtomicInteger(0);
+        emp.forEach(e -> {
+                    if (e.getNombre().equals(name)) {
+                        total.set(CalculadoraImpuestos.calcularPago(e));
+                        calculadora.set(1);
+                    }
+                }
+        );
+        int aux = calculadora.get();
+
+        if (aux != 1) {
+            throw new NotExistingWorkerException("El nombre del empleado no se encuentra en la base de datos!");
+        }
+
+        return total.get();
     }
 }
