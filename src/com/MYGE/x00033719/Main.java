@@ -196,7 +196,7 @@ public class Main {
                         "\nEXTENSION: " + ((PlazaFija) e).getExtension() +
                         "\n(PLAZA FIJA)");
             } else if (e instanceof ServicioProfesional) {
-                empleados.set(empleados + "NOMBRE: " + e.getNombre() +
+                empleados.set(empleados + "\nNOMBRE: " + e.getNombre() +
                         "\nPUESTO: " + e.getPuesto() +
                         "\nSALARIO: " + e.getSalario() +
                         "\nDURACION DE CONTRATO: " + ((ServicioProfesional) e).getMesesContrato() +
